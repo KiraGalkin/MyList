@@ -1,4 +1,5 @@
 public interface MyList<E> {
+
     int size();
 
     boolean isEmpty();
@@ -21,5 +22,5 @@ public interface MyList<E> {
 
     E remove(int index);
 
-    boolean remove(E o);
+    boolean remove(Object o);
 }

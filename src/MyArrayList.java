@@ -1,4 +1,3 @@
-import java.util.Objects;
 
 public class MyArrayList<E> implements MyList<E> {
 
@@ -33,7 +32,6 @@ public class MyArrayList<E> implements MyList<E> {
     @Override
     public E get(int index) {
         checkIndex(index);
-        Objects.checkIndex(index, size);
         return data(index);
     }
 
@@ -159,7 +157,3 @@ public class MyArrayList<E> implements MyList<E> {
     }
 }
 
-/*        for (int i = 0; i < size; i++){
-            if ()
-        }
-*/
