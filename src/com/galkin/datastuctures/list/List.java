@@ -1,4 +1,6 @@
-public interface MyList<E> {
+package com.galkin.datastuctures.list;
+
+public interface List<E> {
 
     int size();
 

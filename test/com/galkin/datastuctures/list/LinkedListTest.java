@@ -1,35 +1,20 @@
+package com.galkin.datastuctures.list;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class MyLinkedListTest {
-    MyLinkedList<Object> list;
+public class LinkedListTest {
+    LinkedList<Object> list;
 
     @Before
     public void before() {
-        list = new MyLinkedList<>();
+        list = new LinkedList<>();
     }
 
-    @Test
-    public void TestAddFirst() {
-        list.addFirst(1);
-        assertEquals(1, list.getFirst());
-        list.addFirst(2);
-        assertEquals(2, list.getFirst());
 
-    }
-
-    @Test
-    public void TestAddLast() {
-
-        list.addLast(1);
-        assertEquals(1, list.getLast());
-        list.addLast(2);
-        assertEquals(2, list.getLast());
-
-    }
 
     @Test
     public void TestSize() {
@@ -146,9 +131,9 @@ public class MyLinkedListTest {
         list.add(4);
         assertEquals(3, list.size());
         assertEquals(1, list.get(0));
-        list.remove(new Integer(1));
+        list.remove(Integer.valueOf(1));
         assertEquals(2, list.get(0));
-        list.remove(new Integer(2));
+        list.remove(Integer.valueOf(2));
         assertEquals(4, list.get(0));
         assertEquals(1, list.size());
     }

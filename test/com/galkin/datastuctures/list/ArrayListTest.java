@@ -1,18 +1,18 @@
+package com.galkin.datastuctures.list;
 
-import org.junit.*;
-
-import java.util.Objects;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-public class MyArrayListTest {
-    private MyArrayList<Object> list;
+public class ArrayListTest {
+    private ArrayList<Object> list;
 
     @Before
     public void before() {
-        list = new MyArrayList<>();
+        list = new ArrayList<>();
     }
 
 
@@ -64,7 +64,7 @@ public class MyArrayListTest {
         list.add(2);
         assertTrue(list.contains(2));
         assertTrue(!list.contains(3));
-        }
+    }
 
     @Test
     public void testClear() {
@@ -76,7 +76,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testIndexOf() throws Exception {
+    public void testIndexOf() {
         list.add(1);
         list.add(2);
         list.add(3);
@@ -87,7 +87,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testLastIndexOf() throws Exception {
+    public void testLastIndexOf() {
         list.add(1);
         list.add(2);
         list.add(3);

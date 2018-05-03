@@ -1,16 +1,16 @@
+package com.galkin.datastuctures.list;
 
-public class MyArrayList<E> implements MyList<E> {
+public class ArrayList<E> implements List<E> {
 
     private Object[] data;
     private int size;
 
 
-    MyArrayList() {
+    ArrayList() {
         data = new Object[10];
     }
-
     @SuppressWarnings("unchecked")
-   private E data(int index) {
+    private E data(int index) {
         return (E) data[index];
     }
 
@@ -47,8 +47,10 @@ public class MyArrayList<E> implements MyList<E> {
     @Override
     public void clear() {
         final Object[] es = data;
-        for (int to = size, i = size = 0; i < to; i++)
+        for (int i = 0; i < size; i++) {
             es[i] = null;
+        }
+        size = 0;
     }
 
     @Override
@@ -76,7 +78,7 @@ public class MyArrayList<E> implements MyList<E> {
 
         } else {
             for (int i = size - 1; i >= 0; i--)
-                if (o == data[i])
+                if (o.equals(data[i]))
                     return i;
 
         }

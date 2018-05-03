@@ -1,103 +1,13 @@
+package com.galkin.datastuctures.list;
+
 import java.util.NoSuchElementException;
 
-public class MyLinkedList<E> implements MyList<E> {
+public class LinkedList<E> implements List<E> {
 
     private int size;
     private Node<E> first;
     private Node<E> last;
 
-
-    private void linkFirst(E e) {
-        final Node<E> f = first;
-        final Node<E> newNode = new Node<>(null, e, f);
-        first = newNode;
-        if (f == null)
-            last = newNode;
-        else
-            f.prev = newNode;
-        size++;
-    }
-
-    private void linkLast(E e) {
-        final Node<E> l = last;
-        final Node<E> newNode = new Node<>(l, e, null);
-        last = newNode;
-        if (l == null)
-            first = newNode;
-        else
-            l.next = newNode;
-        size++;
-    }
-
-    private void linkBeforeElem(E e, Node<E> elem) {
-        final Node<E> pred = elem.prev;
-        final Node<E> newNode = new Node<>(pred, e, elem);
-        elem.prev = newNode;
-        if (pred == null)
-            first = newNode;
-        else
-            pred.next = newNode;
-        size++;
-    }
-
-    private E unlinkFirst(Node<E> f) {
-        final E element = f.item;
-        final Node<E> next = f.next;
-        f.item = null;
-        f.next = null;
-        first = next;
-        if (next == null)
-            last = null;
-        else
-            next.prev = null;
-        size--;
-        return element;
-    }
-
-    private E unlinkLast(Node<E> l) {
-        final E element = l.item;
-        final Node<E> prev = l.prev;
-        l.item = null;
-        l.prev = null;
-        last = prev;
-        if (prev == null)
-            first = null;
-        else
-            prev.next = null;
-        size--;
-        return element;
-    }
-
-    private E unlink(Node<E> x) {
-        final E element = x.item;
-        final Node<E> prev = x.prev;
-        final Node<E> next = x.next;
-
-        if (prev == null) {
-            first = next;
-        } else {
-            prev.next = next;
-            x.prev = null;
-        }
-        if (next == null) {
-            last = prev;
-        } else {
-            next.prev = prev;
-            x.next = null;
-        }
-        x.item = null;
-
-        size--;
-        return element;
-    }
-
-    public void addFirst(E e) {
-        linkFirst(e);
-    }
-
-    public void addLast(E e) {
-        linkLast(e);
-    }
 
     public E getFirst() {
         final Node<E> f = first;
@@ -213,6 +123,7 @@ public class MyLinkedList<E> implements MyList<E> {
 
     }
 
+
     @Override
     public void add(E e) {
         linkLast(e);
@@ -246,7 +157,7 @@ public class MyLinkedList<E> implements MyList<E> {
         return false;
     }
 
-    Node<E> node(int index) {
+    private Node<E> node(int index) {
         checkElementIndex(index);
         if (index < (size << 1)) {
             Node<E> x = first;
@@ -260,6 +171,99 @@ public class MyLinkedList<E> implements MyList<E> {
             return x;
         }
     }
+
+    private void linkFirst(E e) {
+        final Node<E> f = first;
+        final Node<E> newNode = new Node<>(null, e, f);
+        first = newNode;
+        if (f == null)
+            last = newNode;
+        else
+            f.prev = newNode;
+        size++;
+    }
+
+    private void linkLast(E e) {
+        final Node<E> l = last;
+        final Node<E> newNode = new Node<>(l, e, null);
+        last = newNode;
+        if (l == null)
+            first = newNode;
+        else
+            l.next = newNode;
+        size++;
+    }
+
+    private void addFirst(E e) {
+        linkFirst(e);
+    }
+
+    private void addLast(E e) {
+        linkLast(e);
+    }
+
+    private void linkBeforeElem(E e, Node<E> elem) {
+        final Node<E> pred = elem.prev;
+        final Node<E> newNode = new Node<>(pred, e, elem);
+        elem.prev = newNode;
+        if (pred == null)
+            first = newNode;
+        else
+            pred.next = newNode;
+        size++;
+    }
+
+    private E unlinkFirst(Node<E> f) {
+        final E element = f.item;
+        final Node<E> next = f.next;
+        f.item = null;
+        f.next = null;
+        first = next;
+        if (next == null)
+            last = null;
+        else
+            next.prev = null;
+        size--;
+        return element;
+    }
+
+    private E unlinkLast(Node<E> l) {
+        final E element = l.item;
+        final Node<E> prev = l.prev;
+        l.item = null;
+        l.prev = null;
+        last = prev;
+        if (prev == null)
+            first = null;
+        else
+            prev.next = null;
+        size--;
+        return element;
+    }
+
+    private E unlink(Node<E> x) {
+        final E element = x.item;
+        final Node<E> prev = x.prev;
+        final Node<E> next = x.next;
+
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+            x.prev = null;
+        }
+        if (next == null) {
+            last = prev;
+        } else {
+            next.prev = prev;
+            x.next = null;
+        }
+        x.item = null;
+
+        size--;
+        return element;
+    }
+
 
     private boolean isElementIndex(int index) {
         return index >= 0 && index < size;
